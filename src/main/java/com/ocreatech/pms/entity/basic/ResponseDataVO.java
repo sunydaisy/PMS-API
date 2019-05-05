@@ -1,6 +1,8 @@
 package com.ocreatech.pms.entity.basic;
 
+import lombok.Data;
 
+@Data
 public class ResponseDataVO<T> {
 	
 	private Boolean success;
