@@ -15,6 +15,6 @@ public interface UserMapper {
 	List<TbUser> findNameAndPwd(@Param("userName") String userName,@Param("passWord") String passWord);
 
 	@Update("update tb_user set acess_token = #{token} where id = #{id}")
-	int updateUserToken(@Param("token")Long id, @Param("id")String token);
+	int updateUserToken(@Param("id")Long id, @Param("token")String token);
 
 }
