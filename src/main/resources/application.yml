@@ -1,5 +1,5 @@
 #端口号
-server.port: 8080
+server.port: 8081
 
 #数据源
 spring:
@@ -9,6 +9,13 @@ spring:
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
     
-#sql映射地址   
+#mybatis的配置
 mybatis:
    mapper-locations: classpath:mapper/*.xml
+   configuration:
+    map-underscore-to-camel-case: true
+
+#sql日志打印 
+logging: 
+  level:
+    com.ocreatech.pms.mapper: DEBUG
