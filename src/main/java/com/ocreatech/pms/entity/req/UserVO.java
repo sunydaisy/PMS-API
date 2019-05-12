@@ -1,4 +1,4 @@
-package com.ocreatech.pms.entity.basic;
+package com.ocreatech.pms.entity.req;
 
 import javax.validation.constraints.NotBlank;
 

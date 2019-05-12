@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+
 import com.ocreatech.pms.entity.basic.ResponseDataVO;
 import com.ocreatech.pms.entity.basic.ResponseStatus;
-import com.ocreatech.pms.entity.basic.UserVO;
+import com.ocreatech.pms.entity.req.UserVO;
 import com.ocreatech.pms.mapper.UserMapper;
 import com.ocreatech.pms.model.TbUser;
 import com.ocreatech.pms.utils.TokenTool;
@@ -45,8 +46,8 @@ public class SysUserService {
 		// 通过token查询缓存中是否有用户信息，否，则将用户信息放入缓存
 		Object cacheUser = req.getSession().getAttribute(token);
 		if(cacheUser == null) {
-			req.setAttribute(user.getUserCode(), token);
-			req.setAttribute(token, user);
+			req.getSession().setAttribute(user.getUserCode(), token);
+			req.getSession().setAttribute(token, user);
 		}
 		// token持久化
 		userMapper.updateUserToken(user.getId(),token);

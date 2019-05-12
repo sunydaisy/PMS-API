@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ocreatech.pms.mapper.CustomerMapper">
+    <sql id="findAll_select">
+         t.id,
+         t.business_name,
+         t.business_type,
+         t.charge_man,
+         t.communicate_result,
+         t.communicate_time,
+         t.company_address,
+         t.company_name,
+         t.company_website,
+         t.company_website_desc,
+         t.contact_desc,
+         t.contact_name,
+         t.contact_phone,
+         t.corporation_desc,
+         t.corporation_name,
+         t.corporation_phone,
+         t.creat_time,
+         t.cust_name,
+         t.cust_remark,
+         t.cust_status,
+         t.cust_status_name,
+         t.is_communicat
+    </sql>
+
+    <!-- 查询客户信息 -->
+    <select id="findAll" resultType="com.example.demo.domain.UserInfo">
+        select 
+        <include refid="findAll_select"></include>
+        from tb_customer t
+        <where>
+       		 <if test="params.name != null and params.name !='' ">
+       		    and t.cust_name = #{params.name}
+       		     or t.charge_man = #{params.name}
+       		 </if>
+       		 <if test="params.startDate != null">
+       		     and t.creat_time &gt;= #{params.startDate}
+       		 </if>
+       		 <if test="params.endDate != null">
+       		     and t.creat_time &lt;= #{params.endDate}
+       		 </if>
+        </where>
+      
+    </select>
+
+
+</mapper>

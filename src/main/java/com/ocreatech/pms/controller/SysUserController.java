@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.ocreatech.pms.entity.basic.ResponseDataVO;
-import com.ocreatech.pms.entity.basic.UserVO;
+import com.ocreatech.pms.entity.req.UserVO;
 import com.ocreatech.pms.service.SysUserService;
 import com.ocreatech.pms.utils.ValidUtil;
 
