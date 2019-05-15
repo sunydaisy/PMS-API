@@ -28,7 +28,7 @@
     </sql>
 
     <!-- 查询客户信息 -->
-    <select id="findAll" resultType="com.example.demo.domain.UserInfo">
+    <select id="listCust" resultType="com.ocreatech.pms.model.TbCustomer">
         select 
         <include refid="findAll_select"></include>
         from tb_customer t

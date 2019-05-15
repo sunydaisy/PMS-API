@@ -7,6 +7,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 
+import com.ocreatech.pms.entity.basic.PageRequestVO;
+
 public class ValidUtil {
 	
 	private ValidUtil() {
@@ -26,6 +28,15 @@ public class ValidUtil {
 					.collect(Collectors.joining(","));
 		}
 		return fieldError.getDefaultMessage();
+	}
+
+	/**
+	 * 分页参数不能为空
+	 * @param pageRequset
+	 * @return
+	 */
+	public static boolean vaildPageRequst(PageRequestVO pageRequset) {
+		return pageRequset.getPageNum()==null||pageRequset.getPageSize()==null;
 	}
 
 }

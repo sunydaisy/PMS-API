@@ -15,6 +15,13 @@ mybatis:
    configuration:
     map-underscore-to-camel-case: true
 
+#分页设置，指定当前的数据库以及分页合理化参数 
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+       
+   
+
 #sql日志打印 
 logging: 
   level:

@@ -21,7 +21,7 @@ public class SysUserController {
 	@Autowired
 	private SysUserService service;
 	
-	@PostMapping("login")
+	@PostMapping("/login")
 	public ResponseDataVO<Object> login(@Valid @RequestBody UserVO user,BindingResult result) {
 		if(result.hasErrors()) {
 			return ResponseDataVO.fail(ValidUtil.getErrorMsg(result));

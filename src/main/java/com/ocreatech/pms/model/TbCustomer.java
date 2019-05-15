@@ -84,6 +84,9 @@ public class TbCustomer implements Serializable {
 
 	@Column(name="is_communicat")
 	private Boolean isCommunicat;
+	
+	@Column(name="del_flag")
+	private Boolean delFlag;
 
 	public TbCustomer() {
 	}
