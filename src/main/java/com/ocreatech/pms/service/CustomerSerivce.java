@@ -51,7 +51,7 @@ public class CustomerSerivce {
 		TbCustomer entity = new TbCustomer();
 		BeanUtils.copyProperties(params, entity);
 		entity.setDelFlag(false);
-		entity.setCreatTime(LocalDateTime.now());
+		entity.setCreatTime(LocalDateTime.now()); 
 		customerMapper.insert(entity);
 		return entity.getId();
 	}
