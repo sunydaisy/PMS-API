@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import com.ocreatech.pms.learnTest.AbstactTest;
 import com.ocreatech.pms.learnTest.AddressOP;
@@ -21,6 +22,17 @@ import com.ocreatech.pms.learnTest.House;
 public class LeanMain {
 
 	public static void main(String[] args) {
+		/**
+		 * 随机数
+		 */
+		System.out.println(Math.random()*900+100);
+		System.out.println(new Random().nextInt(999));
+		System.out.println(new Random().nextInt(999));
+		System.out.println(new Random().nextInt(999));
+		System.out.println(new Random().nextInt(999));
+		System.out.println(new Random().nextInt(999));
+		System.out.println(new Random().nextInt(999));
+		System.out.println(new Random().nextInt(999));
 		/**
 		 *  枚举类一些常用方法
 		 */

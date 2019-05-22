@@ -1,7 +1,10 @@
 package com.ocreatech.pms.service;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +20,10 @@ import com.ocreatech.pms.mapper.ProjectAttrMappper;
 import com.ocreatech.pms.mapper.ProjectMappper;
 import com.ocreatech.pms.model.TbProjectAttr;
 import com.ocreatech.pms.model.TbProjectInfo;
+import com.ocreatech.pms.utils.BasicDateUtil;
 import com.ocreatech.pms.utils.MyPageHelper;
+
+
 
 /**
  * 项目信息
@@ -31,7 +37,7 @@ public class ProjectService {
 	
 	@Autowired
 	private ProjectAttrMappper projectAttrMapper;
-
+	
 	/**
 	 * 查询项目列表
 	 * @param params
@@ -103,6 +109,20 @@ public class ProjectService {
 			return ResponseStatus.DELETE_FAIL;
 		}
 		return ResponseStatus.SUCCESS;
+	}
+
+	/**
+	 * 获取项目编码LC+YYYYMMDD+三位随机数
+	 * @return
+	 * @throws NoSuchAlgorithmException 
+	 */
+	public String autoCode() throws NoSuchAlgorithmException {
+		String code = "LC";
+		// 获取当前日期
+		String dateStr = BasicDateUtil.formatCurrDate();
+		// 获取三位随机数
+		Random random = SecureRandom.getInstanceStrong();  
+		return code+dateStr+random.nextInt(900)+100;
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.ocreatech.pms.controller;
 
+import java.security.NoSuchAlgorithmException;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,10 +77,7 @@ public class ProjectController {
 	
 	@PostMapping("/autoCode")
 	@OperationLog(name="获取项目编码")
-	public ResponseDataVO<Object> autoCode(@RequestBody ProjectVO params){
-		if(params.getId() == null) {
-			return ResponseDataVO.fail(ResponseStatus.ID_IS_NULL);
-		}
-		return ResponseDataVO.success(service.deleteProject(params));
+	public ResponseDataVO<Object> autoCode() throws NoSuchAlgorithmException{
+		return ResponseDataVO.success(service.autoCode());
 	}
 }
