@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.ocreatech.pms.entity.req.CustomerVO;
 import com.ocreatech.pms.model.TbCustomer;
@@ -24,5 +25,8 @@ public interface CustomerMapper extends BaseMapper<TbCustomer> {
 	@InsertProvider(type = BaseInsertProvider.class, method = "dynamicSQL")
 	@Options(useGeneratedKeys=true,keyProperty="id")
 	int insert(TbCustomer record);
+
+	@Update("update tb_customer set del_flag = 1 where id = #{id}")
+	int deleteById(@Param("id") Long id);
 
 }

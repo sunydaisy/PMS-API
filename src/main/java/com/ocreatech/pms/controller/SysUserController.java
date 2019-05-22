@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ocreatech.pms.annotation.OperationLog;
 import com.ocreatech.pms.entity.basic.ResponseDataVO;
 import com.ocreatech.pms.entity.req.UserVO;
 import com.ocreatech.pms.service.SysUserService;
@@ -22,6 +23,7 @@ public class SysUserController {
 	private SysUserService service;
 	
 	@PostMapping("/login")
+	@OperationLog(name="用户登录")
 	public ResponseDataVO<Object> login(@Valid @RequestBody UserVO user,BindingResult result) {
 		if(result.hasErrors()) {
 			return ResponseDataVO.fail(ValidUtil.getErrorMsg(result));

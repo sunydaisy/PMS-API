@@ -1,6 +1,7 @@
 package com.ocreatech.pms.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -43,7 +44,7 @@ public class TbProjectInfo implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="exp_time")
-	private LocalDateTime expTime;
+	private LocalDate expTime;
 
 	@Column(name="first_domain_name")
 	private String firstDomainName;
@@ -60,15 +61,18 @@ public class TbProjectInfo implements Serializable {
 	@Column(name="project_type")
 	private Integer projectType;
 
-	@Column(name="project_year")
-	private Integer projectYear;
+	@Column(name="charge_man")
+	private String chargeMan;
 
 	@Column(name="second_domain_name")
 	private String secondDomainName;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="up_time")
-	private LocalDateTime upTime;
+	private LocalDate upTime;
+	
+	@Column(name="del_flag")
+	private Boolean delFlag;
 
 	public TbProjectInfo() {
 	}

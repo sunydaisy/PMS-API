@@ -13,34 +13,31 @@ import lombok.Data;
 
 
 /**
- * 项目字典表
+ * 字典表
  */
 @Entity
-@Table(name="tb_attr_map")
+@Table(name="tb_map_code")
 @Data
-public class TbAttrMap implements Serializable {
+public class TbMapCode implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name="attr_code")
-	private Integer attrCode;
+	@Column(name="table_name")
+	private String tableName;
 
-	@Column(name="attr_name")
-	private String attrName;
+	@Column(name="column_name")
+	private String columnName;
 
-	@Column(name="attr_sort")
-	private Integer attrSort;
+	@Column(name="type_code")
+	private Integer typeCode;
 
-	@Column(name="attr_type")
-	private Integer attrType;
+	@Column(name="code_name")
+	private Integer codeName;
 
-	@Column(name="attr_type_name")
-	private String attrTypeName;
-
-	public TbAttrMap() {
+	public TbMapCode() {
 	}
 
 }

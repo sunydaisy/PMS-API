@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ocreatech.pms.mapper.ProjectMappper">
+    <sql id="findAll_select">
+         t.id,
+         t.project_code,
+         t.project_name,
+         t.project_type,
+         t.cust_name,
+         t.cust_contact_phone,
+         t.creat_time,
+         t.first_domain_name,
+         t.second_domain_name,
+         t.company_name,
+         t.up_time,
+         t.exp_time,
+         t.charge_man,
+         t.project_remark
+    </sql>
+
+    <!-- 查询项目信息 -->
+    <select id="listProjectInfo" resultType="com.ocreatech.pms.entity.resp.ProjectRespVO">
+        select 
+        <include refid="findAll_select"></include>
+        from tb_project_info t
+        <where>
+       		 <if test="params.name != null and params.name !='' ">
+       		    and t.project_name like concat('%',#{params.name},'%')
+       		     or t.charge_man like concat('%',#{params.name},'%')
+       		 </if>
+       		 <if test="params.createStartTime != null">
+       		     and t.creat_time &gt;= #{params.createStartTime}
+       		 </if>
+       		 <if test="params.createEndTime != null">
+       		     and t.creat_time &lt;= #{params.createEndTime}
+       		 </if>
+        </where>
+    </select>
+    
+</mapper>

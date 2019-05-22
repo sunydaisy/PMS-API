@@ -20,7 +20,7 @@ public class TbProjectAttr implements Serializable {
 	private Long id;
 
 	@Column(name="project_attr_code")
-	private String projectAttrCode;
+	private Integer projectAttrCode;
 
 	@Column(name="project_attr_name")
 	private String projectAttrName;

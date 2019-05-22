@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ocreatech.pms.mapper.ProjectAttrMappper">
+
+    <!-- 查询其他项目属性设置 -->
+    <select id="listOther" resultType="com.ocreatech.pms.entity.resp.ProjectAttrRespVO">
+        SELECT
+			m.attr_code,
+			m.attr_name,
+		    m.attr_sort,
+			m.attr_type,
+			m.attr_type_name,
+			t.project_attr_value
+		FROM
+			tb_attr_map m
+			LEFT JOIN tb_project_attr t ON m.attr_code != t.project_attr_code 
+		    AND t.project_code = #{projectCode}
+		WHERE
+		    t.project_attr_value IS NULL
+    </select>
+    
+    
+    <!-- 批量更新项目属性 -->
+    <update id="updateProjectAttrBatch" parameterType="java.util.List">
+        <foreach collection="list" item="item" >
+	        UPDATE  
+	            tb_project_attr t
+	        SET 
+	            project_attr_value = item.projectAttrValue
+	        WHERE 
+	            t.project_code = #{projectCode}
+	            t.project_attr_code = item.projectAttrCode
+        </foreach>
+    </update>
+
+
+</mapper>

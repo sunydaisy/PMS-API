@@ -36,7 +36,7 @@ public class ValidUtil {
 	 * @return
 	 */
 	public static boolean vaildPageRequst(PageRequestVO pageRequset) {
-		return pageRequset.getPageNum()==null||pageRequset.getPageSize()==null;
+		return pageRequset == null || pageRequset.getPageNum()==null||pageRequset.getPageSize()==null;
 	}
 
 }

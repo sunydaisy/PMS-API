@@ -77,7 +77,7 @@ public class CustomerSerivce {
 	 * @return
 	 */
 	public Object delete(CustomerVO params) {
-		int result = customerMapper.deleteByPrimaryKey(params.getId());
+		int result = customerMapper.deleteById(params.getId());
 		if (result < 1) {
 			return ResponseStatus.DELETE_FAIL;
 		}

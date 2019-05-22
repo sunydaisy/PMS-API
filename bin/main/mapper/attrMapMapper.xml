@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ocreatech.pms.mapper.AttrMapMapper">
+    <sql id="findAll_select">
+         t.id,
+         t.attr_code,
+         t.attr_name,
+         t.attr_sort,
+         t.attr_type,
+         t.attr_type_name
+    </sql>
+
+    <select id="listAttrMapCodeDesc" resultType="com.ocreatech.pms.model.TbAttrMap">
+        select 
+        <include refid="findAll_select"></include>
+        from tb_attr_map t
+        <where>
+       		 <if test="params.attrType != null">
+       		     and t.attr_type = #{params.attrType}
+       		 </if>
+        </where>
+        ORDER BY t.attr_code DESC
+      
+    </select>
+    
+    <select id="listAttrMapSortDesc" resultType="com.ocreatech.pms.model.TbAttrMap">
+        select 
+        <include refid="findAll_select"></include>
+        from tb_attr_map t
+        <where>
+       		 <if test="params.attrType != null">
+       		     and t.attr_type = #{params.attrType}
+       		 </if>
+        </where>
+        ORDER BY t.attr_sort DESC
+      
+    </select>
+
+
+</mapper>
