@@ -112,7 +112,7 @@ public class ProjectService {
 	}
 
 	/**
-	 * 获取项目编码LC+YYYYMMDD+三位随机数
+	 * 获取项目编码LC+YYYYMMDD+三位随机数(待优化)
 	 * @return
 	 * @throws NoSuchAlgorithmException 
 	 */
@@ -122,7 +122,8 @@ public class ProjectService {
 		String dateStr = BasicDateUtil.formatCurrDate();
 		// 获取三位随机数
 		Random random = SecureRandom.getInstanceStrong();  
-		return code+dateStr+random.nextInt(900)+100;
+		int num = random.nextInt(900)+100;
+		return code+dateStr+num;
 	}
 
 }

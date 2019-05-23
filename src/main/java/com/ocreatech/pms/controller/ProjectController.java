@@ -75,7 +75,7 @@ public class ProjectController {
 		return ResponseDataVO.success(service.deleteProject(params));
 	}
 	
-	@PostMapping("/autoCode")
+	@PostMapping("/autocode")
 	@OperationLog(name="获取项目编码")
 	public ResponseDataVO<Object> autoCode() throws NoSuchAlgorithmException{
 		return ResponseDataVO.success(service.autoCode());

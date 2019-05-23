@@ -2,6 +2,7 @@ package com.ocreatech.pms.service;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,15 +28,16 @@ public class AttrMapService {
 	public Long insertAttrMap(AttrMapVO params) {
 		// 根据属性类型、属性排序，查询是否有相同排序的属性
 		Example example = new Example(TbAttrMap.class);
-		example.createCriteria().andEqualTo("attr_type", params.getAttrType())
-								.andEqualTo("attr_sort",params.getAttrSort());
+		example.createCriteria().andEqualTo("attrType", params.getAttrType())
+								.andEqualTo("attrSort",params.getAttrSort());
 		List<TbAttrMap> list = mapper.selectByExample(example);
 		// 如果存在相同排序的属性，则将该类型下的所有的排序向后推移一位
 		if (!list.isEmpty()) {
-			mapper.updateAttrSort(params.getAttrSort());
+			mapper.updateAttrSort(params.getAttrType(),params.getAttrSort());
 		}
 		// 插入新的属性
 		TbAttrMap entity = new TbAttrMap();
+		BeanUtils.copyProperties(params, entity);
 		mapper.insert(entity);
 		return entity.getId();
 	}

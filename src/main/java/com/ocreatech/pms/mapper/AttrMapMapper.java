@@ -17,7 +17,7 @@ import tk.mybatis.mapper.provider.base.BaseInsertProvider;
 public interface AttrMapMapper extends BaseMapper<TbAttrMap> {
 
 	@Update("UPDATE tb_attr_map set attr_sort = attr_sort+1 where attr_type = #{attrType} and attr_sort >= #{attrSort}")
-	void updateAttrSort(Integer attrSort);
+	void updateAttrSort(@Param("attrType")Integer attrType,@Param("attrSort")Integer attrSort);
 
 	@InsertProvider(type = BaseInsertProvider.class, method = "dynamicSQL")
 	@Options(useGeneratedKeys=true,keyProperty="id")
