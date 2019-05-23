@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ocreatech.pms.mapper.ProjectAttrMappper">
+<mapper namespace="com.ocreatech.pms.mapper.ProjectAttrMapper">
 
     <!-- 查询其他项目属性设置 -->
     <select id="listOther" resultType="com.ocreatech.pms.entity.resp.ProjectAttrRespVO">
@@ -14,10 +14,11 @@
 			t.project_attr_value
 		FROM
 			tb_attr_map m
-			LEFT JOIN tb_project_attr t ON m.attr_code != t.project_attr_code 
-		    AND t.project_code = #{projectCode}
+			LEFT JOIN tb_project_attr t ON m.attr_code = t.project_attr_code 
+		    AND t.project_code = #{params.projectCode}
 		WHERE
 		    t.project_attr_value IS NULL
+		ORDER BY m.attr_type , m.attr_sort
     </select>
     
     

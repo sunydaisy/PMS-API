@@ -19,13 +19,13 @@ import com.ocreatech.pms.service.ProjectAttrService;
 import com.ocreatech.pms.utils.ValidUtil;
 
 @RestController
-@RequestMapping("project/attr/")
+@RequestMapping("/project/attr")
 public class ProjectAttrController {
 	
 	@Autowired
 	private ProjectAttrService service;
 	
-	@PostMapping("list/other")
+	@PostMapping("/list/other")
 	@OperationLog(name="查询其他项目设置")
 	public ResponseDataVO<Object> listOther(@RequestBody ProjectAttrVO params){
 		if(!StringUtils.hasText(params.getProjectCode())) {
@@ -34,7 +34,7 @@ public class ProjectAttrController {
 		return ResponseDataVO.success(service.listOther(params));
 	}
 	
-	@PostMapping("insert/other")
+	@PostMapping("/insert/other")
 	@OperationLog(name="新增其他项目设置")
 	public ResponseDataVO<Object> insertOther(@Valid @RequestBody List<ProjectAttrVO> params,BindingResult result){
 		if(result.hasErrors()) {

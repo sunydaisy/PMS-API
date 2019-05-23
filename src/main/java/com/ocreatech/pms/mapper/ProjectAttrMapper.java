@@ -6,11 +6,12 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import com.ocreatech.pms.entity.req.ProjectAttrVO;
 import com.ocreatech.pms.entity.resp.ProjectAttrRespVO;
 import com.ocreatech.pms.model.TbProjectAttr;
 
 @Mapper
-public interface ProjectAttrMappper extends BaseMapper<TbProjectAttr> {
+public interface ProjectAttrMapper extends BaseMapper<TbProjectAttr> {
 
 	@Select("select "
 			+ "t.*,"
@@ -22,7 +23,7 @@ public interface ProjectAttrMappper extends BaseMapper<TbProjectAttr> {
 			+ "order by m.attr_type asc, m.attr_sort asc")
 	List<TbProjectAttr> listAttrByProjectCode(String projectCode);
 
-	List<ProjectAttrRespVO> listOther(String projectCode);
+	List<ProjectAttrRespVO> listOther(@Param("params") ProjectAttrVO params);
 
 	int updateProjectAttrBatch(@Param("list") List<TbProjectAttr> projectAttr);
 

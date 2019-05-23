@@ -2,6 +2,8 @@ package com.ocreatech.pms.aop;
 
 import java.lang.reflect.Method;
 import java.time.LocalDateTime;
+import java.util.Optional;
+
 import javax.servlet.http.HttpServletRequest;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
@@ -63,7 +65,8 @@ public class OperationLogAspect {
 			// 操作用户
 			String token = req.getHeader(RequestCommonEunm.ACCESS_TOKEN.key());
 			TbUser user = (TbUser) req.getSession().getAttribute(token);
-			operationLog.setOperationUser(user.getUserName());
+			String operationUser = Optional.ofNullable(user).map(TbUser::getUserName).orElse("");
+			operationLog.setOperationUser(operationUser);
 			// 操作名称，获取Method可以优化
 			Class<?>[] parameterTypes = ((MethodSignature) signature).getMethod().getParameterTypes();
 			Method method = joinPoint.getTarget().getClass().getMethod(signature.getName(), parameterTypes);

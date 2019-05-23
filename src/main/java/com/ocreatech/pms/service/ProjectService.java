@@ -16,7 +16,7 @@ import com.ocreatech.pms.entity.basic.ResponseStatus;
 import com.ocreatech.pms.entity.req.ProjectVO;
 import com.ocreatech.pms.entity.resp.ProjectDetailRespVO;
 import com.ocreatech.pms.entity.resp.ProjectRespVO;
-import com.ocreatech.pms.mapper.ProjectAttrMappper;
+import com.ocreatech.pms.mapper.ProjectAttrMapper;
 import com.ocreatech.pms.mapper.ProjectMappper;
 import com.ocreatech.pms.model.TbProjectAttr;
 import com.ocreatech.pms.model.TbProjectInfo;
@@ -36,7 +36,7 @@ public class ProjectService {
 	private ProjectMappper mapper;
 	
 	@Autowired
-	private ProjectAttrMappper projectAttrMapper;
+	private ProjectAttrMapper projectAttrMapper;
 	
 	/**
 	 * 查询项目列表

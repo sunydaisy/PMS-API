@@ -45,7 +45,6 @@
        		     and t.creat_time &lt;= #{params.endDate}
        		 </if>
         </where>
-      
     </select>
 
 
