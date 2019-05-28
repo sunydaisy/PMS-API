@@ -5,7 +5,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
 import lombok.extern.slf4j.Slf4j;
-import sun.misc.BASE64Encoder;
+
+import java.util.Base64;
+import java.util.Base64.Encoder;
 
 /**
  * token工具类
@@ -27,8 +29,8 @@ public class TokenTool {
         try {  
            MessageDigest md = MessageDigest.getInstance("md5");  
            byte[] md5 =  md.digest(token.getBytes());  
-           BASE64Encoder encoder = new BASE64Encoder();  
-           return encoder.encode(md5);  
+           Encoder encoder = Base64.getEncoder();  
+           return encoder.encodeToString(md5);
        } catch (NoSuchAlgorithmException e) { 
     	   log.info(e.getMessage(),e);
        }  

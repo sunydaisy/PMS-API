@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.ocreatech.pms.entity.basic.ResponseStatus;
 import com.ocreatech.pms.entity.req.CustomerVO;
 import com.ocreatech.pms.mapper.CustomerMapper;
 import com.ocreatech.pms.model.TbCustomer;
+import com.ocreatech.pms.utils.MyPageHelper;
 
 /**
  * 客户信息
@@ -30,7 +30,7 @@ public class CustomerSerivce {
 	 * @return
 	 */
 	public Page<TbCustomer> listCust(CustomerVO params) {
-		return PageHelper.startPage(params.pageRequset()).doSelectPage(() -> customerMapper.listCust(params));
+		return MyPageHelper.doSelectPage(params.pageRequset(),() -> customerMapper.listCust(params));
 	}
 
 	/**
